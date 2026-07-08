@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scyllastar | Yacht &amp; Fleet Management Platform</title>
+<meta name="description" content="Scyllastar is fleet management software for independent yacht management companies. Accounting, charters, crew compliance and owner reporting connected in one platform. From 99 EUR per vessel per month.">
+<style>
+  :root{
+    --navy:#0b2340;
+    --navy-2:#12335c;
+    --teal:#0e8a8a;
+    --green:#3fae5c;
+    --ink:#0b2340;
+    --muted:#5b6b7c;
+    --line:#e2e8ee;
+    --bg:#f6f8fa;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.nav{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:0.5px;}
+  .logo svg{width:26px;height:26px;flex-shrink:0;}
+  .logo .star{color:var(--green);}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  .navlinks a{opacity:.85;}
+  .navlinks a:hover{opacity:1;}
+  .nav-cta{background:var(--green);color:#08210f;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;white-space:nowrap;}
+  @media(max-width:860px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);color:#fff;padding:72px 0 56px;}
+  .hero-inner{max-width:760px;margin:0 auto;text-align:center;}
+  .hero h1{font-size:44px;line-height:1.15;margin:0 0 18px;font-weight:800;letter-spacing:-0.5px;}
+  .hero p.sub{font-size:19px;color:#c9d6e4;margin:0 auto 32px;max-width:620px;}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
+  .btn-primary{background:var(--green);color:#08210f;padding:14px 28px;border-radius:8px;font-weight:700;font-size:15px;display:inline-block;}
+  .btn-secondary{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;}
+  .pricing-anchor{color:#9db4cc;font-size:13px;margin-top:14px;}
+
+  /* ICP TILES */
+  .tiles{margin-top:-40px;}
+  .tiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .tile{background:var(--card);border-radius:14px;padding:26px 22px;box-shadow:0 12px 30px rgba(11,35,64,.12);border:1px solid var(--line);}
+  .tile.center{border-top:3px solid var(--green);transform:translateY(-6px);}
+  .tile .role{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal);margin-bottom:8px;}
+  .tile h3{font-size:19px;margin:0 0 6px;font-weight:700;}
+  .tile p{margin:0;color:var(--muted);font-size:14.5px;}
+  @media(max-width:800px){.tiles-grid{grid-template-columns:1fr;}.tile.center{transform:none;}}
+
+  /* STATS */
+  .stats{padding:64px 0 8px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 16px;text-align:center;}
+  .stat .num{font-size:28px;font-weight:800;color:var(--navy);}
+  .stat .lbl{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  @media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* SECTION generic */
+  section{padding:64px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+  .eyebrow{color:var(--teal);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;}
+  .section-head h2{font-size:30px;margin:0;font-weight:800;letter-spacing:-.3px;}
+
+  /* WHY MANAGERS SWITCH */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .why-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:24px;}
+  .why-card h3{margin:0 0 8px;font-size:17px;font-weight:700;}
+  .why-card p{margin:0;color:var(--muted);font-size:14.5px;}
+  @media(max-width:760px){.why-grid{grid-template-columns:1fr;}}
+
+  /* TESTIMONIAL */
+  .testimonial{background:var(--navy);color:#fff;border-radius:16px;padding:44px 40px;text-align:center;max-width:820px;margin:0 auto;}
+  .testimonial p.quote{font-size:22px;line-height:1.5;font-weight:600;margin:0 0 18px;font-style:italic;}
+  .testimonial .attr{color:#9db4cc;font-size:14px;font-weight:600;}
+
+  /* FLOW */
+  .flow{background:var(--card);}
+  .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .flow-step{text-align:center;}
+  .flow-num{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 16px;font-size:17px;}
+  .flow-step h3{font-size:16.5px;margin:0 0 8px;font-weight:700;}
+  .flow-step p{color:var(--muted);font-size:14px;margin:0;}
+  .flow-tag{text-align:center;margin-top:36px;font-weight:700;color:var(--navy);font-size:15px;}
+  @media(max-width:760px){.flow-grid{grid-template-columns:1fr;}}
+
+  /* MODULES */
+  .modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .module{background:var(--navy);color:#fff;border-radius:10px;padding:20px 16px;text-align:center;}
+  .module .m-name{font-weight:700;font-size:14.5px;margin-bottom:6px;}
+  .module .m-line{font-size:12.5px;color:#a9bcd0;}
+  .modules-tag{text-align:center;color:var(--muted);font-size:14.5px;margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto;}
+  @media(max-width:860px){.modules-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* FOUNDER */
+  .founder{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .founder-photo{background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:16px;height:280px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;opacity:.85;}
+  .founder h2{font-size:26px;margin:0 0 14px;font-weight:800;}
+  .founder p{color:var(--muted);font-size:15px;margin:0 0 18px;}
+  .founder a.link{color:var(--teal);font-weight:700;font-size:14.5px;}
+  @media(max-width:800px){.founder{grid-template-columns:1fr;}.founder-photo{height:200px;}}
+
+  /* PRICING CTA */
+  .pricing-cta{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff;text-align:center;border-radius:20px;padding:56px 32px;}
+  .pricing-cta h2{font-size:28px;margin:0 0 12px;font-weight:800;}
+  .pricing-cta p{color:#c9d6e4;margin:0 0 26px;font-size:15.5px;}
+  .pricing-line{margin-top:18px;color:#9db4cc;font-size:13.5px;}
+
+  footer{background:var(--navy);color:#9db4cc;padding:40px 0;font-size:13.5px;}
+  .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M3 18c2 1 4 1 6 0s4-1 6 0 4 1 6 0" stroke="#3fae5c" stroke-width="2" stroke-linecap="round"/><path d="M6 14L12 3l6 11" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>SCYLLA<span class="star">STAR</span></div>
+    <nav class="navlinks">
+      <a href="#">Yacht Managers</a>
+      <a href="#">Yacht Captains</a>
+      <a href="#">Accounting</a>
+      <a href="#">Pricing</a>
+      <a href="#">Our Story</a>
+    </nav>
+    <a href="#demo" class="nav-cta">Book your demo</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <h1>Less Admin. Full Oversight. Same Team.</h1>
+    <p class="sub">The fleet management platform built for yacht managers, captains and owners. Accounting, charters, crew and compliance connected in one place.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-primary">Book your demo</a>
+      <a href="#pricing" class="btn-secondary">See pricing</a>
+    </div>
+    <div class="pricing-anchor">From €99 per vessel / month · No setup fees</div>
+  </div>
+</section>
+
+<div class="wrap tiles">
+  <div class="tiles-grid">
+    <div class="tile">
+      <div class="role">Yacht Captains</div>
+      <h3>Less paperwork, more time on deck.</h3>
+      <p>Scan a receipt, log a drill, done. No cost to captains, ever.</p>
+    </div>
+    <div class="tile center">
+      <div class="role">Yacht Managers</div>
+      <h3>Grow your fleet without growing your team.</h3>
+      <p>One dashboard for every vessel, every owner, every euro.</p>
+    </div>
+    <div class="tile">
+      <div class="role">Yacht Owners</div>
+      <h3>Full visibility, without calling your manager.</h3>
+      <p>A branded monthly report lands in your inbox automatically.</p>
+    </div>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">All-in-One</div><div class="lbl">Accounting, Charters, Crew &amp; Compliance in Sync</div></div>
+      <div class="stat"><div class="num">40+ Hours</div><div class="lbl">Saved per vessel, per month</div></div>
+      <div class="stat"><div class="num">MYBA</div><div class="lbl">Certified Workflow</div></div>
+      <div class="stat"><div class="num">75+</div><div class="lbl">Vessels on the Platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why managers switch</div>
+      <h2>Your fleet. Fully managed.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Less Administration</h3>
+        <p>Connect your banks, charter platforms and accounting tools to Scyllastar. Reduce duplicate work and free your team from unnecessary admin.</p>
+      </div>
+      <div class="why-card">
+        <h3>Connected Teams</h3>
+        <p>Bring captains, crew and shore teams onto the same page, reducing back-and-forth and improving coordination.</p>
+      </div>
+      <div class="why-card">
+        <h3>Scale Without Hiring</h3>
+        <p>Grow your fleet without increasing administrative workload or expanding your back-office team.</p>
+      </div>
+      <div class="why-card">
+        <h3>Stronger Owner Relationships</h3>
+        <p>Deliver faster reporting, greater transparency and a more professional experience to every owner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="testimonial">
+      <p class="quote">"Scyllastar has been a game changer for managing our fleet. We increased our fleet by 50% without hiring a single additional staff member, strongly increasing our margins."</p>
+      <div class="attr">Loic Aime, CEO, Olympe Yachting</div>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Zero double entry. Zero chasing.</h2>
+    </div>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <h3>Captain scans a receipt</h3>
+        <p>Categorised in seconds, posted to accounting automatically.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <h3>Manager reviews and approves</h3>
+        <p>One click. No rebuilt reports, no back-and-forth.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <h3>Owner receives their report</h3>
+        <p>A branded monthly report. Full visibility, zero admin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Platform</div>
+      <h2>Seven modules. One platform. No re-entry.</h2>
+    </div>
+    <div class="modules-grid">
+      <div class="module"><div class="m-name">Global Accounting</div><div class="m-line">VAT, expenses, GL-ready</div></div>
+      <div class="module"><div class="m-name">Charter Management</div><div class="m-line">APA, MYBA, reconciliation</div></div>
+      <div class="module"><div class="m-name">Crew Management</div><div class="m-line">Contracts, visas, rest hours</div></div>
+      <div class="module"><div class="m-name">Yacht Management</div><div class="m-line">Docs, schedules, ISM</div></div>
+      <div class="module"><div class="m-name">Digital Logbook</div><div class="m-line">Live operational record</div></div>
+      <div class="module"><div class="m-name">Fleet Scheduling</div><div class="m-line">Across every vessel</div></div>
+      <div class="module"><div class="m-name">Alert Dashboard</div><div class="m-line">Nothing expires unnoticed</div></div>
+    </div>
+    <p class="modules-tag">Every event, a charter booking, a port call, a crew embarkation, flows into accounting automatically. Nothing is entered twice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="founder">
+      <div class="founder-photo">Founder photo placeholder</div>
+      <div>
+        <div class="eyebrow">Our story</div>
+        <h2>Built by a captain and a financial software architect.</h2>
+        <p>Our co-founder spent years as a professional captain watching talented managers drown in spreadsheets, chasing receipts and rebuilding reports from scratch every month. He built the tool he always wished existed. Nine years later, it manages 75+ vessels across professional fleets in Europe.</p>
+        <a href="#" class="link">Meet the team who built it &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="pricing-cta">
+      <h2>Seen enough?</h2>
+      <p>30 minutes is all it takes to understand whether Scyllastar fits your operation.</p>
+      <a href="#" class="btn-primary">Book your demo</a>
+      <div class="pricing-line" id="pricing">From €99/vessel/month · No setup fees · Unlimited users per licence · Free full data migration</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>&copy; 2026 Scyllastar. GDPR-compliant hosting in France.</div>
+    <div class="footer-links">
+      <a href="#">Yacht Managers</a>
+      <a href="#">Yacht Captains</a>
+      <a href="#">Pricing</a>
+      <a href="#">Our Story</a>
+      <a href="#">Blog</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
